@@ -22,10 +22,10 @@ public class StudentController {
     @PostMapping("/verifyIfHasCertificarion")    
     public String verifyIfHasCertificarion(@RequestBody VerifyIfHasCertificarionDTO verifyIfHasCertificarionDTO){
         
-        var result = this.verifyIfHasCertificarionUseCase.execure(verifyIfHasCertificarionDTO);
+        var result = this.verifyIfHasCertificarionUseCase.execute(verifyIfHasCertificarionDTO);
         if(result){
             return "Usuario já fez a prova";
-        }
+        } 
         return "Usuario pode fazer a prova";
     }
 }
