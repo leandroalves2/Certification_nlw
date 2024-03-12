@@ -2,6 +2,7 @@ package com.rocketseat.certification_nlw.modules.students.entities;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.Optional;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
