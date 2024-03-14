@@ -9,8 +9,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class CreateSeed {
+
     private final JdbcTemplate jdbcTemplate;
-    public CreateSeed(DataSource dataSource){
+
+    public CreateSeed(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
@@ -25,16 +27,18 @@ public class CreateSeed {
         createSeed.run(args);
     }
 
-    public void run(String... args){
+    public void run(String... args) {
         executeSqlFile("src/main/resources/create.sql");
     }
 
     private void executeSqlFile(String filePath) {
-        try{
+        try {
             String sqlScript = new String(Files.readAllBytes(Paths.get(filePath)));
+
             jdbcTemplate.execute(sqlScript);
-            System.out.println("Seed realizado com sucesso!");
-        } catch (IOException e){
+
+            System.out.println("Seed realizado com sucesso");
+        } catch (IOException e) {
             System.err.println("Erro ao executar arquivo " + e.getMessage());
         }
     }

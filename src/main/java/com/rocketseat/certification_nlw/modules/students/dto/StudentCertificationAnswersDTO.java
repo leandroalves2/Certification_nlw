@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -15,7 +16,7 @@ public class StudentCertificationAnswersDTO {
 
     private String email;
     private String technology;
-    private List<QuestionAnswerDTO> QuestionAnswer;
+    private List<QuestionAnswerDTO> questionsAnswers;
 }
 
 

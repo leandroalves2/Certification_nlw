@@ -24,31 +24,32 @@ public class QuestionController {
     private QuestionRepository questionRepository;
 
     @GetMapping("/technology/{technology}")
-    public List<QuestionResultDTO> findByTechnology(@PathVariable String technology){
+    public List<QuestionResultDTO> findByTechnology(@PathVariable String technology) {
+        System.out.println("TECH === " + technology);
         var result = this.questionRepository.findByTechnology(technology);
+
         var toMap = result.stream().map(question -> mapQuestionToDTO(question))
                 .collect(Collectors.toList());
         return toMap;
     }
 
-    static QuestionResultDTO mapQuestionToDTO(QuestionEntity question){
-       var questionResultDTO = QuestionResultDTO.builder()
-               .id(question.getId())
-               .technology(question.getTechnology())
+    static QuestionResultDTO mapQuestionToDTO(QuestionEntity question) {
+        var questionResultDTO = QuestionResultDTO.builder()
+                .id(question.getId())
+                .technology(question.getTechnology())
                 .description(question.getDescription()).build();
 
-       List<AlternativesResultDTO> alternativesResultDTOS = question.getAlternatives()
-            .stream().map(alternative -> mapAlternativeDTO(alternative))
-            .collect(Collectors.toList());
+        List<AlternativesResultDTO> alternativesResultDTOs = question.getAlternatives()
+                .stream().map(alternative -> mapAlternativeDTO(alternative))
+                .collect(Collectors.toList());
 
-       questionResultDTO.setAlternatives(alternativesResultDTOS);
-       return questionResultDTO;
+        questionResultDTO.setAlternatives(alternativesResultDTOs);
+        return questionResultDTO;
     }
 
-    static AlternativesResultDTO mapAlternativeDTO(AlternativesEntity alternativesResultDTO){
+    static AlternativesResultDTO mapAlternativeDTO(AlternativesEntity alternativesResultDTO) {
         return AlternativesResultDTO.builder()
                 .id(alternativesResultDTO.getId())
                 .description(alternativesResultDTO.getDescription()).build();
-
     }
 }

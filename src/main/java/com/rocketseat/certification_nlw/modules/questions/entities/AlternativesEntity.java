@@ -13,14 +13,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity(name = "alternatives")
-public class AlternativesEntity {    
-    
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class AlternativesEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     private String description;

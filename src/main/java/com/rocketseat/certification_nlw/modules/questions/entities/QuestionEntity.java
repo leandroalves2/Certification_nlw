@@ -22,10 +22,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity(name = "questions")
 public class QuestionEntity {
-    
-    
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Column(length = 50)
@@ -39,5 +38,4 @@ public class QuestionEntity {
 
     @CreationTimestamp
     private LocalDateTime createdAt;
-
 }

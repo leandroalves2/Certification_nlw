@@ -12,7 +12,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 public class AlternativesResultDTO {
+
     private UUID id;
     private String description;
-
 }
